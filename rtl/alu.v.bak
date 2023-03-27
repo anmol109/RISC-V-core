@@ -103,6 +103,6 @@ else if(
 
 
 
-assign alu_p_o    = result;
+assign alu_p_o    = result_r;
 
 endmodule
