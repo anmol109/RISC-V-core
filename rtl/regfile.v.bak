@@ -1,4 +1,4 @@
-module regfile(clk, rst, write_en, read_en, read_data, write_data, read_reg, write_reg) ;
+module regfile(clk, write_en, read_en, read_data, write_data, read_reg, write_reg,rst) ;
 input rst;
 input clk;
 input write_en;

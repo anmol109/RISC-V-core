@@ -1,4 +1,4 @@
-module decoder_tb;
+module rv_decoder_tb;
 reg [31:0] instr;
 reg clk;
 //branch inst
@@ -51,6 +51,11 @@ wire is_sh;
 wire is_sw;
 wire is_ecall;
 
+//alu
+wire [9:0] funct7_funct3;
+wire [4:0] rs1_reg, rs2_reg;
+wire [31:0] rs1_imm;
+
 decoder d1(instr, clk,
 is_beq,is_bne,is_blt,is_bge,is_bltu,is_bgeu,
 is_add,
@@ -85,10 +90,12 @@ is_lhu,
 is_sb,
 is_sh,
 is_sw,
-is_ecall
+is_ecall,
+funct7_funct3,
+rs1_reg, rs2_reg, rs1_imm
 );
 
-initial begin
+/*initial begin
 clk = 0;
 //is_blt
 instr = 32'b0000000_00000_00000_100_00000_1100011; 
@@ -108,6 +115,15 @@ instr = 32'b0000000_00000_00000_100_00000_1100011;
 #10 instr = 32'b1100000_00000_00000_110_00000_0010011; 
 #50 $finish;
 
+end*/
+
+initial begin
+clk = 0;
+//is_add
+#10 instr = 32'b0000000_00011_00000_000_00000_0110011;
+//is_addi
+#30 instr = 32'b000011100011_00000_000_00000_0000011;
+#50 $finish;
 end
 
 always #5 clk = ~clk;
