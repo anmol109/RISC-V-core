@@ -92,15 +92,15 @@ alu_b=32'd15;
 is_add=1'b1;
 @(posedge clk)
 is_add=1'bx;
-@posedge clk)
+@(posedge clk)
 is_and=1'b1;
 @(posedge clk)
 is_and=1'bx;
-#25
+#50
 $finish;
 end
 initial 
-forever clk=~clk;
+forever #20 clk=~clk;
 
 
 

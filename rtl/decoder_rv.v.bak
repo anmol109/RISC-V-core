@@ -128,7 +128,7 @@ rs1_imm = {20'b0,instr[31:20]};
 rs2_reg = rs2;
 end
 end
-initial count = 0;
+initial count = 0;                                              //remove later
 //sending rs1 and rs2 to regfile (r type)
 always @(posedge clk) begin
 if (is_r_instr && !count) begin

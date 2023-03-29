@@ -88,19 +88,19 @@ initial begin
 clk=1'b0;
 alu_a=32'd10;
 alu_b=32'd15;
-@(posedge clk)
+@(negedge clk)
 is_add=1'b1;
-@(posedge clk)
+@(negedge clk)
 is_add=1'bx;
-@(posedge clk)
+@(negedge clk)
 is_and=1'b1;
-@(posedge clk)
+@(negedge clk)
 is_and=1'bx;
-#25
+#50
 $finish;
 end
 initial 
-forever clk=~clk;
+forever #20 clk=~clk;
 
 
 
