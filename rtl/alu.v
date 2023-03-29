@@ -85,24 +85,13 @@ else if(is_slt||is_slti) begin
 			result=alu_b;
 	end
 end
-else if(
+else
+result=32'dx;
+end
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-assign alu_p_o    = result;
+assign alu_p_o = result;
 
 endmodule
