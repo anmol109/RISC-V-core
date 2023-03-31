@@ -1,4 +1,4 @@
-module top_trial(instr,clk,rst,regfile,read_data,rs1_imm);
+module top_trial(instr,clk,rst,regfile,read_data);
 
 input [31:0] instr;
 input [31:0] regfile;
