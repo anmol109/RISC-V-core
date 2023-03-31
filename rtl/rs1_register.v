@@ -1,9 +1,9 @@
-module rs1_register(clk,rst, opcode, write_data_decoder, write_data_regfile, read_data);
+module rs1_register(clk,rst, opcode, write_data_decoder, write_data_regfile, rf_read_data);
 
 input clk,rst;
 input [6:0] opcode;                 //check if is_r, is_i possible
 
-output [31:0] read_data;
+output [31:0] rf_read_data;
 
 input [31:0] write_data_regfile,write_data_decoder;
 
@@ -23,6 +23,6 @@ mem <= write_data_regfile;
 
 end
 
-assign read_data = mem;
+assign rf_read_data = mem;
 
 endmodule
