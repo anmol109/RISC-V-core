@@ -5,8 +5,9 @@ input [31:0] regfile;
 input clk,rst;
 
 output [31:0] read_data;
+wire [31:0] rs1_imm;
 
-decoder d1(instr, clk,
+decoder_rv d1(instr, clk,
 is_beq,is_bne,is_blt,is_bge,is_bltu,is_bgeu,
 is_add,
 is_addi,
@@ -44,6 +45,9 @@ is_ecall,
 funct7_funct3,
 rs1_reg, rs2_reg, rs1_imm
 );
+
+//wire [31:0] w1;
+//assign w1 = rs1_imm;
 
 rs1_register r1 (.clk(clk),.rst(rst), .opcode(instr[6:0]), .write_data_decoder(rs1_imm), .write_data_regfile(regfile), .read_data(read_data));
 

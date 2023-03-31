@@ -1,4 +1,4 @@
-module decoder(instr, clk,
+module decoder_rv(instr, clk,
 is_beq,is_bne,is_blt,is_bge,is_bltu,is_bgeu,
 is_add,
 is_addi,
