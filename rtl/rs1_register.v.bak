@@ -25,3 +25,4 @@ end
 
 assign read_data = mem;
 
+endmodule
