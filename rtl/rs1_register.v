@@ -16,7 +16,7 @@ if(opcode[6:3] === 4'b0000||             //i type check
    opcode[6:2] === 5'b11001) 
 mem <= write_data_decoder;
 
-else if(opcode[6:4] === 3'b011||
+else if(opcode[6:4] === 3'b011||         //r type check
         opcode[6:2] === 5'b01011||
         opcode[6:2] === 5'b10100)
 mem <= write_data_regfile;

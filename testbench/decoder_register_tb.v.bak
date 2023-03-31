@@ -3,10 +3,11 @@ module decoder_register_tb;
 reg [31:0] instr,regfile;
 reg clk,rst;
 
-reg write_en, read_en;
-reg [31:0] write_data;
-reg [4:0] read_reg,write_reg;
+reg rf_write_en, rf_read_en;
+reg [31:0] rf_write_data;
+reg [4:0] rf_read_reg,rf_write_reg;
 
+wire [31:0] rf_read_data;
 wire [31:0] read_data;
 
 top_trial dut(instr,clk,rst,regfile,read_data);
@@ -17,12 +18,15 @@ always #5 clk = ~clk;
 initial begin
 regfile = 0;
 clk = 0;
+rf_write_en = 1; rf_read_en = 0;
+#10 rf_write_reg = 5'b00000; rf_write_data = 31'd10;
+#10 rf_write_reg = 5'b00001; rf_write_data = 31'd15;               //regfile has values
 
 //is_addi
 //#30 instr = 32'b000011100011_00000_000_00000_0000011;
 
 //is_add
-#10 instr = 32'b0000000_00000_00001_000_00000_0110011;
+#10 instr = 32'b0000000_00000_00001_000_00000_0110011; rf_read_en = 1;
 #50 $finish;
 
 end
