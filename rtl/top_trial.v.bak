@@ -52,7 +52,7 @@ wire[31:0] read_data, write_data;
 wire[4:0] read_reg, write_reg;
 
 rs1_register r1 (.clk(clk),.rst(rst), .opcode(instr[6:0]), .write_data_decoder(rs1_imm), .write_data_regfile(regfile), .read_data(read_data));
-regfile rf(.clk(clk), .rst(rst), write_en, read_en, read_data, write_data, read_reg, write_reg) ;
+regfile rf_r(.clk(clk), .rst(rst), write_en, read_en, read_data, write_data, read_reg, write_reg) ;
 rs2_register r2(.clk(clk),.rst(rst),  .write_data_regfile(read_data), read_data.(rs2_reg));
 
 
