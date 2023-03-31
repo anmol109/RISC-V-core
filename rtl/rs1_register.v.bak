@@ -3,7 +3,7 @@ module rs1_register(clk,rst, opcode, write_data_decoder, write_data_regfile, rea
 input clk,rst;
 input [6:0] opcode;                 //check if is_r, is_i possible
 
-output reg [31:0] read_data;
+output [31:0] read_data;
 
 input [31:0] write_data_regfile,write_data_decoder;
 
