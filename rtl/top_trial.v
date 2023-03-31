@@ -51,9 +51,9 @@ rs1_reg, rs2_reg, rs1_imm
 wire[31:0] rf_read_data, rf_write_data;
 wire[4:0] read_reg, write_reg;
 
-rs1_register r1 (.clk(clk),.rst(rst), .opcode(instr[6:0]), .write_data_decoder(rs1_imm), .write_data_regfile(regfile), .read_data(read_data));
 regfile rf(.clk(clk), .rst(rst), rf_write_en, rf_read_en, rf_read_data, rf_write_data, .rf_read_reg(rs1_reg), rf_write_reg) ;
-rs2_register r2(.clk(clk),.rst(rst),  .write_data_regfile(read_data), read_data.(rs2_reg));
+rs1_register rs1(.clk(clk),.rst(rst), opcode, .write_data_decoder(rs1_imm), .write_data_regfile(rf_read_data), rs1_read_data);
+rs2_register rs2(.clk(clk),.rst(rst),.rs2_write_data(, rs2_read_data);
 
 
 endmodule
