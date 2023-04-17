@@ -1,11 +1,17 @@
-module top_trial(instr,clk,rst,regfile,rs1_read_data,rs2_read_data);
+module top_trial(instr,clk,rst,rs1_read_data,rs2_read_data,
+		 rf_write_en, rf_write_reg, rf_write_data);
 
 input [31:0] instr;
-input [31:0] regfile;
 input clk,rst;
 
 output [31:0] rs1_read_data,rs2_read_data;
 wire [31:0] rs1_imm;
+wire [4:0] rs1_reg, rs2_reg;
+
+//regfile port
+input rf_write_en;
+input [4:0] rf_write_reg;
+input [31:0] rf_write_data;
 
 decoder_rv d1(instr, clk,
 is_beq,is_bne,is_blt,is_bge,is_bltu,is_bgeu,

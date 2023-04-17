@@ -1,10 +1,17 @@
-module top_trial(instr,clk,rst,rs1_read_data,rs2_read_data);
+module top_trial(instr,clk,rst,rs1_read_data,rs2_read_data,
+		 rf_write_en, rf_write_reg, rf_write_data);
 
 input [31:0] instr;
 input clk,rst;
 
 output [31:0] rs1_read_data,rs2_read_data;
 wire [31:0] rs1_imm;
+wire [4:0] rs1_reg, rs2_reg;
+
+//regfile port
+input rf_write_en;
+input [4:0] rf_write_reg;
+input [31:0] rf_write_data;
 
 decoder_rv d1(instr, clk,
 is_beq,is_bne,is_blt,is_bge,is_bltu,is_bgeu,
@@ -52,7 +59,7 @@ wire[4:0] read_reg, write_reg;
 wire rf_write_en;
 
 //regfile rf(.clk(clk), .rst(rst), rf_write_en, rf_read_en, rf_read_data, rf_write_data, .rf_read_reg(rs1_reg), rf_write_reg) ;
-regfile rf(.clk(clk), .rst(rst), .rf_rs1_addr(rs1_reg), .rf_rs2_addr(rs2_reg), .rf_rs1_data(rf_rs1), .rf_rs2_data(rf_rs2), .rf_write_en(rf_write_en), .rf_write_data(rf_write_data), .rf_write_reg(write_reg));
+regfile rf(.clk(clk), .rst(rst), .rf_rs1_addr(rs1_reg), .rf_rs2_addr(rs2_reg), .rf_rs1_data(rf_rs1), .rf_rs2_data(rf_rs2), .rf_write_en(rf_write_en), .rf_write_data(rf_write_data), .rf_write_reg(rf_write_reg));
 rs1_register rs1(.clk(clk),.rst(rst), .opcode(instr[6:0]), .write_data_decoder(rs1_imm), .write_data_regfile(rf_rs1), .rs1_read_data(rs1_read_data));
 rs2_register rs2(.clk(clk),.rst(rst),.rs2_write_data(rf_rs2),.rs2_read_data(rs2_read_data));
 
