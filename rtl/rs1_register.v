@@ -23,6 +23,6 @@ mem <= write_data_regfile;
 
 end
 
-assign rf_read_data = mem;
+assign rs1_read_data = mem;
 
 endmodule
