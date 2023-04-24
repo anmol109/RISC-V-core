@@ -1,4 +1,4 @@
-module multiplier_rv (a,b,clk,rst,ld,out,valid);
+module add_shift (a,b,clk,rst,ld,out,valid);
 
 parameter N = 32;
 

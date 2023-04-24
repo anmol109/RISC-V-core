@@ -1,5 +1,8 @@
 module top_trial(instr,clk,rst,rs1_read_data,rs2_read_data,
-		 rf_write_en, rf_write_reg, rf_write_data);
+		 rf_write_en, rf_write_reg, rf_write_data,ld);
+
+//temp
+input ld;
 
 input [31:0] instr;
 input clk,rst;
@@ -103,11 +106,15 @@ is_sb,
 is_sh,
 is_sw,
 is_ecall,
-alu_a,    //rs1 and rs2 go here
-alu_b,
+rs2_read_data,    //rs1 and rs2 go here
+rs1_read_data,
 
     // Outputs
 alu_p_o
 );
+
+//multiplier
+
+add_shift mul1(rs2_read_data,rs1_read_data,clk,rst,ld,out,valid)
 
 endmodule

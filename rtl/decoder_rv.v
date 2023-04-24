@@ -33,6 +33,7 @@ is_sb,
 is_sh,
 is_sw,
 is_ecall,
+//is_mul,
 funct7_funct3,
 rs1_reg, rs2_reg, rs1_imm
 );
@@ -98,6 +99,7 @@ output reg is_srl;
 output reg is_sra;
 output reg is_lui;
 output reg is_auipc;
+//output reg is_mul;
 
 
 //jump instructions
@@ -125,7 +127,7 @@ assign funct7_funct3 = (is_r_instr)? {funct7,funct3}:0;  //for alu
 always @(posedge clk) begin
 if (is_i_instr) begin
 rs1_imm = {20'b0,instr[31:20]};
-rs2_reg = rs2;
+rs2_reg = instr[19:15];
 end
 end
 
